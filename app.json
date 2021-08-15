@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "demo",
-    "slug": "demo",
+    "name": "Banking_App",
+    "slug": "banking_app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "IT's a basic Banking Application Build by React Native.",
+    "githubUrl": "https://github.com/ankit1509/Banking_App"
   }
 }
