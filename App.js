@@ -35,7 +35,7 @@ export default function App() {
     async function fetchCustomersDetails() {
       try {
         const data = await axios.get(
-          "https://banking-server.herokuapp.com/customers"
+          process.env.React_App_API_KEY+"/customers"
         );
         setCustomersDetails(data.data);
         setCustomerLoader(true);
@@ -54,7 +54,7 @@ export default function App() {
      async function fetchTransactionDetails() {
        try {
          const transactionData = await axios.get(
-           "https://banking-server.herokuapp.com/transactions"
+           process.env.React_App_API_KEY+"/transactions"
          );
          setTransactionDetails(transactionData.data);
          setTransactionLoader(true);
@@ -76,11 +76,11 @@ export default function App() {
     setDisable(true);
 
      try{
-       const checkfrom = await axios.get(`https://banking-server.herokuapp.com/customers/${parseInt(from)}`)
+       const checkfrom = await axios.get(process.env.React_App_API_KEY+`/customers/${parseInt(from)}`)
        
        if(checkfrom.data)
        {
-         const checkto = await axios.get(`https://banking-server.herokuapp.com/customers/${parseInt(to)}`)
+         const checkto = await axios.get(process.env.React_App_API_KEY+`/customers/${parseInt(to)}`)
          
          if(checkto.data)
          {
@@ -91,14 +91,14 @@ export default function App() {
            }
           try {
             const transfer = await axios.put(
-              `https://banking-server.herokuapp.com/customers/${data.from}&${data.to}`,
+              process.env.React_App_API_KEY+`/customers/${data.from}&${data.to}`,
               {
                 amount: data.amount,
               }
             );
             if (transfer.status === 200 && !transfer.data.message) {
               const response = await axios.post(
-                "https://banking-server.herokuapp.com/transactions",
+                process.env.React_App_API_KEY+"/transactions",
                 data
               );
               if (response.status === 200) {
